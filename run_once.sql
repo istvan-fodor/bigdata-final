@@ -1,0 +1,1 @@
+create index ix_scorecard_year on scorecard(year);
