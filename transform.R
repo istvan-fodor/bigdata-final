@@ -18,5 +18,5 @@ college_pred <- college[,-1]
 
 sum <- summary(college)
 
-fit <- glm( ten_yrs_after_entry_median ~ ., data = college_pred, na.action = "na.omit")
+fit <- glm( ten_yrs_after_entry_median ~ ., data = college_pred, na.action = "na.exclude")
 
