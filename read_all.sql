@@ -79,12 +79,12 @@ SELECT
     UGDS_2MOR       AS "race_percent_two_or_more",
     UGDS_NRA        AS "race_percent_non_resident_alien",
     UGDS_UNKN       AS "race_percent_unknown",
-    md_earn_wne_p10 AS "10_yrs_after_entry_median",
-    gt_25k_p6       AS "6_yrs_after_entry_percent_greater_than_25000",
     UGDS            AS "size",
     TUITIONFEE_IN   AS "tuition_in_state",
     TUITIONFEE_OUT  AS "tuition_out_of_state",
-    TUITIONFEE_PROG AS "tuition_program_year"
+    TUITIONFEE_PROG AS "tuition_program_year",
+    md_earn_wne_p10 AS "ten_yrs_after_entry_median",
+    gt_25k_p6       AS "six_yrs_after_entry_percent_greater_than_25000"
 FROM
     scorecard
 WHERE
