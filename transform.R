@@ -40,6 +40,7 @@ for (i in 1:ncol(college)) {
 ## NA Code
 nam <- college[,sapply(college,is.numeric)]
 nam <- as.data.frame(is.na(nam))
+nam <- subset(nam,select = c(-ten_yrs_after_entry_median))
 nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
 
@@ -53,14 +54,3 @@ for(col in 1:ncol(college)) {
     college[,col] <- coldata
   }
 }
-
-## New Code
-y <- college[,84]
-college <- college[,-84]
-x <- sparse.model.matrix(~.,data=college)[,-1]
-
-cv.reg <- cv.gamlr(x,y)
-reg <- gamlr(x,y,lmr=1e-4)
-
-cv.reg2 <- cv.gamlr(cBind(x,nasmm),y,lmr=1e-4)
-reg2 <- gamlr(cBind(x,nasmm),y,lmr=1e-4)
