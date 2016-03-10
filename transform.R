@@ -1,3 +1,4 @@
+library(gamlr)
 library(RSQLite)
 con <- dbConnect(SQLite(), dbname="database.sqlite")
 
@@ -33,35 +34,37 @@ for (i in 1:ncol(college)) {
 
 ## NA Code
 nam <- college[,sapply(college,is.numeric)]
-nam <- as.data.frame(is.na(temp))
+nam <- as.data.frame(is.na(nam))
 nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
-is_na <- ifelse(is.na(college), 1,0)
-colnames(is_na) <- paste(colnames(is_na), "_missing", sep = "")
+##is_na <- ifelse(is.na(college), 1,0)
+##colnames(is_na) <- paste(colnames(is_na), "_missing", sep = "")
 
 for(col in 1:ncol(college)) {
   coldata <- college[,col]
-  print(class(coldata))
+  ##print(class(coldata))
   if (class(coldata) == "numeric") {
-    print(col)
+    ##print(col)
     indexes <- which(is.na(coldata))
     coldata[which(is.na(coldata))] <- rep(mean(coldata, na.rm = TRUE), length(indexes))
     college[,col] <- coldata
   }
 }
 
+##x_na <- Matrix(is_na, sparse = TRUE)  #sparse.model.matrix( ~ . , data = is_na)[,-1]
+##x <- sparse.model.matrix(  ~ ., data=college[,-1])[,-1]
 
 
-x_na <- Matrix(is_na, sparse = TRUE)  #sparse.model.matrix( ~ . , data = is_na)[,-1]
-x <- sparse.model.matrix(  ~ ., data=college[,-1])[,-1]
 
 
+
+## New Code
 y <- college[,84]
 college <- college[,-84]
 x <- sparse.model.matrix(~.,data=college)[,-1]
 
-## Regression
 cv.reg <- cv.gamlr(x,y)
 reg <- gamlr(x,y,lmr=1e-4)
 
-reg2 <- gamlr(cBind(x,temp3),y,lmr=1e-4)
+cv.reg2 <- cv.gamlr(cBind(x,nasmm),y,lmr=1e-4)
+reg2 <- gamlr(cBind(x,nasmm),y,lmr=1e-4)
