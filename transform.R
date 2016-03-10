@@ -25,8 +25,6 @@ college$logsize <- log(1+college$size)
 college$log_tuition_in_state <- log(1+college$tuition_in_state) 
 
 
-college_pred <- college[,-1]
-
 for (i in 1:ncol(college)) {
   if (class(college[,i]) == "integer") {
     college[,i] <- as.numeric(college[,i])
@@ -34,17 +32,25 @@ for (i in 1:ncol(college)) {
 }
 
 
-for(col in 1:ncol(college_pred)) {
-  coldata <- college_pred[,col]
+
+
+for(col in 1:ncol(college)) {
+  coldata <- college[,col]
   print(class(coldata))
   if (class(coldata) == "numeric") {
+    print(col)
     indexes <- which(is.na(coldata))
     coldata[which(is.na(coldata))] <- rep(mean(coldata, na.rm = TRUE), length(indexes))
-    college_pred[,col] <- coldata
-    print(college_pred[,col])
-    ""
+    college[,col] <- coldata
   }
 }
 
-which(is.na(college_pred)[3044420])
+
+is_na <- ifelse(is.na(college_pred), 1,0)
+colnames(is_na) <- paste(colnames(is_na), "_missing", sep = "")
+
+x_na <- Matrix(is_na, sparse = TRUE)  #sparse.model.matrix( ~ . , data = is_na)[,-1]
+x <- sparse.model.matrix(  ~ ., data=college[,-1])[,-1]
+
+
 
