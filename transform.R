@@ -32,7 +32,8 @@ for (i in 1:ncol(college)) {
 }
 
 
-
+is_na <- ifelse(is.na(college), 1,0)
+colnames(is_na) <- paste(colnames(is_na), "_missing", sep = "")
 
 for(col in 1:ncol(college)) {
   coldata <- college[,col]
@@ -46,8 +47,6 @@ for(col in 1:ncol(college)) {
 }
 
 
-is_na <- ifelse(is.na(college_pred), 1,0)
-colnames(is_na) <- paste(colnames(is_na), "_missing", sep = "")
 
 x_na <- Matrix(is_na, sparse = TRUE)  #sparse.model.matrix( ~ . , data = is_na)[,-1]
 x <- sparse.model.matrix(  ~ ., data=college[,-1])[,-1]
