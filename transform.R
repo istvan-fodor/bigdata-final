@@ -6,6 +6,9 @@ fileName <- 'read_all.sql'
 query <- readChar(fileName, file.info(fileName)$size)
 
 college <- dbGetQuery(con, query)
+college_names <- college[,1]
+college <- college[,-1]
+
 college$region <- factor(college$region)
 college$control <- as.factor(college$control)
 college$locale <- as.factor(college$locale)
@@ -22,6 +25,8 @@ college$religious_affil <- factor(college$religious_affil, levels = c(NA, levels
 college$predominant_degree <- factor(college$predominant_degree, levels = c(NA, levels(college$predominant_degree)), exclude = NULL)
 college$highest_degree <- factor(college$highest_degree, levels = c(NA, levels(college$highest_degree)), exclude = NULL)
 
+
+
 college$logsize <- log(1+college$size)
 college$log_tuition_in_state <- log(1+college$tuition_in_state) 
 
@@ -37,8 +42,6 @@ nam <- college[,sapply(college,is.numeric)]
 nam <- as.data.frame(is.na(nam))
 nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
-##is_na <- ifelse(is.na(college), 1,0)
-##colnames(is_na) <- paste(colnames(is_na), "_missing", sep = "")
 
 for(col in 1:ncol(college)) {
   coldata <- college[,col]
@@ -50,13 +53,6 @@ for(col in 1:ncol(college)) {
     college[,col] <- coldata
   }
 }
-
-##x_na <- Matrix(is_na, sparse = TRUE)  #sparse.model.matrix( ~ . , data = is_na)[,-1]
-##x <- sparse.model.matrix(  ~ ., data=college[,-1])[,-1]
-
-
-
-
 
 ## New Code
 y <- college[,84]
