@@ -86,8 +86,8 @@ SELECT
     TUITIONFEE_IN   AS "tuition_in_state",
     TUITIONFEE_OUT  AS "tuition_out_of_state",
     TUITIONFEE_PROG AS "tuition_program_year",
-    md_earn_wne_p10 AS "ten_yrs_after_entry_median",
-    gt_25k_p6       AS "six_yrs_after_entry_percent_greater_than_25000"
+    md_earn_wne_p10 AS "ten_yrs_after_entry_median"
+    --gt_25k_p6       AS "six_yrs_after_entry_percent_greater_than_25000"
 FROM
     scorecard
 WHERE
