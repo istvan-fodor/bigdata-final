@@ -11,4 +11,4 @@ reg <- gamlr(cBind(xsmm,nasmm),y,lmr=1e-4)
 
 ## Plot Lasso and view Coefficients
 plot(reg)
-coefs(reg)
+coef(reg)
