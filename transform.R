@@ -6,8 +6,8 @@ fileName <- 'read_all.sql'
 query <- readChar(fileName, file.info(fileName)$size)
 
 college <- dbGetQuery(con, query)
-college_metadata <- college[,1:3]
-college <- college[,-(1:3)]
+college_metadata <- college[,1:6]
+college <- college[,-(1:6)]
 
 college$region <- factor(college$region)
 college$control <- as.factor(college$control)
