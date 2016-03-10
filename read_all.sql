@@ -2,6 +2,9 @@ SELECT
     INSTNM          AS "name",
     LATITUDE        AS "latitude",
     LONGITUDE       AS "longitude",
+    CITY            AS "city",
+    STABBR          AS "stabbr",
+    ZIP             AS "zip",
     YEAR            AS "year",
     CONTROL         AS "control",
     region          AS "region",
@@ -86,7 +89,10 @@ SELECT
     TUITIONFEE_IN   AS "tuition_in_state",
     TUITIONFEE_OUT  AS "tuition_out_of_state",
     TUITIONFEE_PROG AS "tuition_program_year",
-    md_earn_wne_p10 AS "ten_yrs_after_entry_median"
+    md_earn_wne_p10 AS "ten_yrs_after_entry_median",
+    INEXPFTE        AS "instructional_expenditure_per_fte",
+    AVGFACSAL       AS "faculty_salary",
+    PFTFAC          AS "ft_faculty_rate"
     --gt_25k_p6       AS "six_yrs_after_entry_percent_greater_than_25000"
 FROM
     scorecard
@@ -94,4 +100,3 @@ WHERE
     YEAR >= 2009;
     
     
-select *
