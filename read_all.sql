@@ -1,5 +1,8 @@
 SELECT
     INSTNM          AS "name",
+    LATITUDE        AS "latitude",
+    LONGITUDE       AS "longitude",
+    YEAR            AS "year",
     CONTROL         AS "control",
     region          AS "region",
     locale          AS "locale",
@@ -89,3 +92,6 @@ FROM
     scorecard
 WHERE
     YEAR >= 2009;
+    
+    
+select *
