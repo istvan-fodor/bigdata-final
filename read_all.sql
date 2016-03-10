@@ -9,7 +9,6 @@ SELECT
     CONTROL         AS "control",
     region          AS "region",
     locale          AS "locale",
-    CCBASIC         AS "carnegie",
     RELAFFIL        AS "religious_affil",
     ADM_RATE        AS "admission_rate",
     ADM_RATE_ALL    AS "admission_rate_all",
@@ -89,14 +88,15 @@ SELECT
     TUITIONFEE_IN   AS "tuition_in_state",
     TUITIONFEE_OUT  AS "tuition_out_of_state",
     TUITIONFEE_PROG AS "tuition_program_year",
+    TUITFTE         AS 'tuition_revenue_per_fte',
     md_earn_wne_p10 AS "ten_yrs_after_entry_median",
     INEXPFTE        AS "instructional_expenditure_per_fte",
     AVGFACSAL       AS "faculty_salary",
-    PFTFAC          AS "ft_faculty_rate"
+    PFTFAC          AS "ft_faculty_rate",
+    COSTT4_A        AS "cost_attendance_academic_year",
+    COSTT4_P        AS "cost_attendance_program_year"
     --gt_25k_p6       AS "six_yrs_after_entry_percent_greater_than_25000"
 FROM
     scorecard
 WHERE
-    YEAR >= 2009;
-    
-    
+    YEAR >= 2009
