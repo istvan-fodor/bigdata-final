@@ -31,6 +31,10 @@ for (i in 1:ncol(college)) {
   }
 }
 
+## NA Code
+nam <- college[,sapply(college,is.numeric)]
+nam <- as.data.frame(is.na(temp))
+nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
 is_na <- ifelse(is.na(college), 1,0)
 colnames(is_na) <- paste(colnames(is_na), "_missing", sep = "")
@@ -52,4 +56,12 @@ x_na <- Matrix(is_na, sparse = TRUE)  #sparse.model.matrix( ~ . , data = is_na)[
 x <- sparse.model.matrix(  ~ ., data=college[,-1])[,-1]
 
 
+y <- college[,84]
+college <- college[,-84]
+x <- sparse.model.matrix(~.,data=college)[,-1]
 
+## Regression
+cv.reg <- cv.gamlr(x,y)
+reg <- gamlr(x,y,lmr=1e-4)
+
+reg2 <- gamlr(cBind(x,temp3),y,lmr=1e-4)
