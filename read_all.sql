@@ -175,7 +175,7 @@ SELECT
     PCTFLOAN                    AS "federal_loan_rate",
     UG25abv                     AS "share_25_older",
     GRAD_DEBT_MDN_SUPP          AS "median_debt_suppressed_completers_overall",
-    RPY_3YR_RT_SUPP             AS "3_yr_repayment_suppressed_overall"
+    RPY_3YR_RT_SUPP             AS "three_yr_repayment_suppressed_overall"
 FROM
     scorecard
 LEFT OUTER JOIN
