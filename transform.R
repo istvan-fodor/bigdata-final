@@ -1,3 +1,5 @@
+set.seed(41201)
+
 library(gamlr)
 library(RSQLite)
 
@@ -48,31 +50,28 @@ cost_x <- cbind(cost_x,has_tuition_b)
 cost_x <- cbind(cost_x, paste(college_metadata$city, college_metadata$stabbr,sep = ","))
 colnames(cost_x)[ncol(cost_x)] <- "location"
 cost_x[is.na(cost_x)] <- 0 
-cost_x <- sparse.model.matrix(~ has_tuition_a * (tuition_in_state + tuition_out_of_state) * location + has_tuition_b * tuition_program_year * location + tuition_revenue_per_fte * location + ., data = cost_x)
+cost_x <- sparse.model.matrix(~ has_tuition_a * (log(1+tuition_in_state) + log(1+tuition_out_of_state)) * location + has_tuition_b * log(1+tuition_program_year) * location + log(1+tuition_revenue_per_fte) * location + ., data = cost_x)
 cost_y <- college[,c("cost_attendance_academic_year", "cost_attendance_program_year")]
-cost_y <- ifelse(is.na(cost_y$cost_attendance_academic_year), cost_y$cost_attendance_program_year, cost_y$cost_attendance_academic_year)
+cost_y <- ifelse(is.na(cost_y$cost_attendance_academic_year), log(1+cost_y$cost_attendance_program_year), log(1+cost_y$cost_attendance_academic_year))
 fit <- cv.gamlr(cost_x[which(!is.na(cost_y)),], cost_y[which(!is.na(cost_y))], lambda.min.ratio=1e-4)
 1-fit$gamlr$deviance[fit$seg.1se]/fit$gamlr$deviance[1]
-#0.8345802
+#0.6391429
 plot(fit)
 
-college$cost <- ifelse(is.na(college$cost_attendance_academic_year), college$cost_attendance_program_year, college$cost_attendance_academic_year)
-pred <- as.matrix(predict(fit, newdata = cost_x[which(is.na(college$cost)),]))
+college$logcost <- ifelse(is.na(college$cost_attendance_academic_year), log(1+college$cost_attendance_program_year), log(1+college$cost_attendance_academic_year))
+pred <- as.matrix(predict(fit, newdata = cost_x[which(is.na(college$logcost)),]),  select="1se")
 ###########
 pred_check <- predict(fit, newdata = cost_x[which(!is.na(cost_y)),])
 pred_check <- as.matrix(cbind(cost_y[which(!is.na(cost_y))], pred_check))
 ###########
 college$is_predicted_cost <- rep(0, nrow(college))
-college$is_predicted_cost[which(is.na(college$cost))]=1
-college$cost[which(is.na(college$cost))] = pred
-which(is.na(college$cost))
+college$is_predicted_cost[which(is.na(college$logcost))]=1
+college$logcost[which(is.na(college$logcost))] = pred
+which(is.na(college$logcost))
 
 college <- subset(college, select = c(-tuition_in_state,-tuition_out_of_state,-tuition_program_year,-tuition_revenue_per_fte,-cost_attendance_academic_year,-cost_attendance_program_year))
 ##Negative predicitions... look into predicting logs
-cmin <- college[(which(college$cost < 0)),]
-college$cost[which(college$cost < 0)] <- 0
-
-college$log_cost <- log(1+college$cost)
+cmin <- college[(which(college$logcost < 0)),]
 
 ## NA Code
 nam <- college[,sapply(college,is.numeric)]
