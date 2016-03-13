@@ -14,6 +14,7 @@ college$region <- factor(college$region)
 college$control <- as.factor(college$control)
 college$locale <- as.factor(college$locale)
 college$religious_affil <- as.factor(college$religious_affil)
+college$religious_affil <- relevel(college$religious_affil, ref = "None")
 college$predominant_degree <- as.factor(college$predominant_degree)
 college$highest_degree <- as.factor(college$highest_degree)
 
