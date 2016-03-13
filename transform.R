@@ -20,7 +20,6 @@ college$highest_degree <- as.factor(college$highest_degree)
 college$region <- factor(college$region, levels = c(NA, levels(college$region)), exclude = NULL)
 college$control <- factor(college$control, levels = c(NA, levels(college$control)), exclude = NULL)
 college$locale <- factor(college$locale, levels = c(NA, levels(college$locale)), exclude = NULL)
-college$religious_affil <- factor(college$religious_affil, levels = c(NA, levels(college$religious_affil)), exclude = NULL)
 college$predominant_degree <- factor(college$predominant_degree, levels = c(NA, levels(college$predominant_degree)), exclude = NULL)
 college$highest_degree <- factor(college$highest_degree, levels = c(NA, levels(college$highest_degree)), exclude = NULL)
 
