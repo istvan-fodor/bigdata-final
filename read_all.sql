@@ -56,10 +56,6 @@ SELECT
         THEN 1
         ELSE 0
     END             AS "women_only",
-    RET_FT4         AS "retention_rate_four_year_full_time",
-    RET_FTL4        AS "retention_rate_lt_four_year_full_time",
-    RET_PT4         AS "retention_rate_four_year_part_time",
-    RET_PTL4        AS "retention_rate_lt_four_year_part_time",
     ADM_RATE        AS "admission_rate",
     ADM_RATE_ALL    AS "admission_rate_all",
     PREDDEG         AS "predominant_degree",
@@ -146,7 +142,9 @@ SELECT
     COSTT4_A        AS "cost_attendance_academic_year",
     COSTT4_P        AS "cost_attendance_program_year",
     PCTPELL         AS "pell_grant_rate",
-    PFTFTUG1_EF     AS "share_first_time_full_time"
+    PFTFTUG1_EF     AS "share_first_time_full_time",
+    COALESCE(RET_FT4, RET_FTL4)       AS "retention_rate_full_time",
+    COALESCE(RET_PT4, RET_PTL4)       AS "retention_rate_part_time"
 FROM
     scorecard
 LEFT OUTER JOIN
