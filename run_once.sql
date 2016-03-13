@@ -1,1 +1,1 @@
-CREATE INDEX IF NOT EXISTS ix_scorecard_opeid_unitid_year ON scorecard ( YEAR, unitid, opeid )
+CREATE UNIQUE INDEX IF NOT EXISTS ix_scorecard_opeid_unitid_year ON scorecard ( YEAR, unitid, opeid )
