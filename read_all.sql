@@ -1,25 +1,65 @@
 SELECT
-    INSTNM          AS "name",
-    LATITUDE        AS "latitude",
-    LONGITUDE       AS "longitude",
-    CITY            AS "city",
-    STABBR          AS "stabbr",
-    ZIP             AS "zip",
-    YEAR            AS "year",
-    CONTROL         AS "control",
-    region          AS "region",
-    R.CCBASIC       AS "carnegie",
-    R.locale        AS "locale",
-    R.RELAFFIL      AS "religious_affil",
-    R.HBCU          AS "historically_black",
-    R.PBI           AS "predominantly_black",
-    R.ANNHI         AS "alaskan_hawaian",
-    R.TRIBAL        AS "tribal",
-    R.AANAPII       AS "asian_am_native_am_pacific",
-    R.HSI           AS "hispanic",
-    R.NANTI         AS "native_american_non_tribal",
-    R.MENONLY       AS "men_only",
-    R.WOMENONLY     AS "women_only",
+    INSTNM                    AS "name",
+    R.LATITUDE                AS "latitude",
+    R.LONGITUDE               AS "longitude",
+    CITY                      AS "city",
+    STABBR                    AS "stabbr",
+    ZIP                       AS "zip",
+    YEAR                      AS "year",
+    CONTROL                   AS "control",
+    region                    AS "region",
+    R.CCBASIC                 AS "carnegie",
+    R.locale                  AS "locale",
+    IFNULL(R.RELAFFIL,'None') AS "religious_affil",
+    CASE
+        WHEN R.HBCU = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "historically_black",
+    CASE
+        WHEN R.PBI = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "predominantly_black",
+    CASE
+        WHEN R.ANNHI = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "alaskan_hawaian",
+    CASE
+        WHEN R.TRIBAL = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "tribal",
+    CASE
+        WHEN R.AANAPII = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "asian_am_native_am_pacific",
+    CASE
+        WHEN R.HSI = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "hispanic",
+    CASE
+        WHEN R.NANTI = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "native_american_non_tribal",
+    CASE
+        WHEN R.MENONLY = 'Yes'
+        THEN 1
+        ELSE 0
+    END AS "men_only",
+    CASE
+        WHEN R.WOMENONLY = 'Yes'
+        THEN 1
+        ELSE 0
+    END             AS "women_only",
+    RET_FT4         AS "retention_rate_four_year_full_time",
+    RET_FTL4        AS "retention_rate_lt_four_year_full_time",
+    RET_PT4         AS "retention_rate_four_year_part_time",
+    RET_PTL4        AS "retention_rate_lt_four_year_part_time",
     ADM_RATE        AS "admission_rate",
     ADM_RATE_ALL    AS "admission_rate_all",
     PREDDEG         AS "predominant_degree",
@@ -105,7 +145,8 @@ SELECT
     PFTFAC          AS "ft_faculty_rate",
     COSTT4_A        AS "cost_attendance_academic_year",
     COSTT4_P        AS "cost_attendance_program_year",
-    PCTPELL         AS "pell_grant_rate"
+    PCTPELL         AS "pell_grant_rate",
+    PFTFTUG1_EF     AS "share_first_time_full_time"
 FROM
     scorecard
 LEFT OUTER JOIN
@@ -124,7 +165,9 @@ LEFT OUTER JOIN
             NANTI ,
             MENONLY ,
             WOMENONLY,
-            CCBASIC
+            CCBASIC,
+            LATITUDE,
+            LONGITUDE
         FROM
             scorecard
         WHERE
