@@ -1,4 +1,3 @@
-select count(*) from (
 SELECT
     INSTNM          AS "name",
     LATITUDE        AS "latitude",
@@ -9,6 +8,7 @@ SELECT
     YEAR            AS "year",
     CONTROL         AS "control",
     region          AS "region",
+    R.CCBASIC       AS "carnegie",
     R.locale        AS "locale",
     R.RELAFFIL      AS "religious_affil",
     R.HBCU          AS "historically_black",
@@ -104,7 +104,8 @@ SELECT
     AVGFACSAL       AS "faculty_salary",
     PFTFAC          AS "ft_faculty_rate",
     COSTT4_A        AS "cost_attendance_academic_year",
-    COSTT4_P        AS "cost_attendance_program_year"
+    COSTT4_P        AS "cost_attendance_program_year",
+    PCTPELL         AS "pell_grant_rate"
 FROM
     scorecard
 LEFT OUTER JOIN
@@ -122,15 +123,17 @@ LEFT OUTER JOIN
             HSI ,
             NANTI ,
             MENONLY ,
-            WOMENONLY
+            WOMENONLY,
+            CCBASIC
         FROM
             scorecard
         WHERE
             YEAR = 2013) R
 ON
-    scorecard.opeid = r.opeid and scorecard.unitid = r.opeid
+    scorecard.opeid = r.opeid
+AND scorecard.unitid = r.unitid
 WHERE
     YEAR IN (2007,
              2009,
              2011)
-AND md_earn_wne_p10 IS NOT NULL)
+AND md_earn_wne_p10 IS NOT NULL
