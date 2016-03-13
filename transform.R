@@ -59,7 +59,7 @@ fit <- cv.gamlr(cost_x[which(!is.na(cost_y)),], cost_y[which(!is.na(cost_y))], l
 plot(fit)
 
 college$logcost <- ifelse(is.na(college$cost_attendance_academic_year), log(1+college$cost_attendance_program_year), log(1+college$cost_attendance_academic_year))
-pred <- as.matrix(predict(fit, newdata = cost_x[which(is.na(college$logcost)),]),  select="1se")
+pred <- as.matrix(predict(fit, newdata = cost_x[which(is.na(college$logcost)),], select="1se"))
 ###########
 pred_check <- predict(fit, newdata = cost_x[which(!is.na(cost_y)),])
 pred_check <- as.matrix(cbind(cost_y[which(!is.na(cost_y))], pred_check))
@@ -70,8 +70,6 @@ college$logcost[which(is.na(college$logcost))] = pred
 which(is.na(college$logcost))
 
 college <- subset(college, select = c(-tuition_in_state,-tuition_out_of_state,-tuition_program_year,-tuition_revenue_per_fte,-cost_attendance_academic_year,-cost_attendance_program_year))
-##Negative predicitions... look into predicting logs
-cmin <- college[(which(college$logcost < 0)),]
 
 ## NA Code
 nam <- college[,sapply(college,is.numeric)]
