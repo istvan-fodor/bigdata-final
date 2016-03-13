@@ -10,6 +10,15 @@ SELECT
     region          AS "region",
     locale          AS "locale",
     RELAFFIL        AS "religious_affil",
+    HBCU            AS "historically_black",
+    PBI             AS "predominantly_black",
+    ANNHI           AS "alaskan_hawaian",
+    TRIBAL          AS "tribal",
+    AANAPII         AS "asian_am_native_am_pacific",
+    HSI             AS "hispanic",
+    NANTI           AS "native_american_non_tribal",
+    MENONLY         AS "men_only",
+    WOMENONLY       AS "women_only",
     ADM_RATE        AS "admission_rate",
     ADM_RATE_ALL    AS "admission_rate_all",
     PREDDEG         AS "predominant_degree",
@@ -99,4 +108,5 @@ SELECT
 FROM
     scorecard
 WHERE
-    YEAR >= 2009
+    YEAR IN (2009, 2011)
+AND md_earn_wne_p10 IS NOT NULL
