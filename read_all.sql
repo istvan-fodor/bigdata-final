@@ -1,15 +1,37 @@
 SELECT
-    INSTNM                    AS "name",
-    R.LATITUDE                AS "latitude",
-    R.LONGITUDE               AS "longitude",
-    CITY                      AS "city",
-    STABBR                    AS "stabbr",
-    ZIP                       AS "zip",
-    YEAR                      AS "year",
-    CONTROL                   AS "control",
-    region                    AS "region",
-    R.CCBASIC                 AS "carnegie",
-    R.locale                  AS "locale",
+    INSTNM      AS "name",
+    R.LATITUDE  AS "latitude",
+    R.LONGITUDE AS "longitude",
+    CITY        AS "city",
+    STABBR      AS "stabbr",
+    ZIP         AS "zip",
+    YEAR        AS "year",
+    CONTROL     AS "control",
+    SUBSTR(region,1,
+    CASE
+        WHEN CHARINDEX('(', region) > 0
+        THEN CHARINDEX('(', region)-2
+        ELSE LENGTH(region)
+    END)      AS "region",
+    R.CCBASIC AS "carnegie_basic",
+    SUBSTR(R.CCUGPROF,1,
+    CASE
+        WHEN CHARINDEX('(', R.CCUGPROF) > 0
+        THEN CHARINDEX('(', R.CCUGPROF)-2
+        ELSE LENGTH(R.CCUGPROF)
+    END) AS "carnegie_undergrad",
+    SUBSTR(R.CCSIZSET,1,
+    CASE
+        WHEN CHARINDEX('(', R.CCSIZSET) > 0
+        THEN CHARINDEX('(', R.CCSIZSET)-2
+        ELSE LENGTH(R.CCSIZSET)
+    END) AS "carnegie_size_setting",
+    SUBSTR(R.locale,1,
+    CASE
+        WHEN CHARINDEX('(', R.locale) > 0
+        THEN CHARINDEX('(', R.locale)-2
+        ELSE LENGTH(R.locale)
+    END)                      AS "locale",
     IFNULL(R.RELAFFIL,'None') AS "religious_affil",
     CASE
         WHEN R.HBCU = 'Yes'
@@ -111,7 +133,7 @@ SELECT
     PCIP41                      AS "percent_science_technology",
     PCIP42                      AS "percent_psychology",
     PCIP43                      AS "percent_security_law_enforcement",
-    PCIP44                      AS "percent_public_administration_social_service",
+    PCIP44                      AS "percent_public_administration_social_service" ,
     PCIP45                      AS "percent_social_science",
     PCIP46                      AS "percent_construction",
     PCIP47                      AS "percent_mechanic_repair_technology",
@@ -138,7 +160,7 @@ SELECT
     md_earn_wne_p10             AS "ten_yrs_after_entry_median",
     INEXPFTE                    AS "instructional_expenditure_per_fte",
     AVGFACSAL                   AS "faculty_salary",
-    PFTFAC                      AS "ft_faculty_rate",
+    PFTFAC                      AS "ft_faculty_rate" ,
     COSTT4_A                    AS "cost_attendance_academic_year",
     COSTT4_P                    AS "cost_attendance_program_year",
     PCTPELL                     AS "pell_grant_rate",
@@ -164,6 +186,8 @@ LEFT OUTER JOIN
             MENONLY ,
             WOMENONLY,
             CCBASIC,
+            CCUGPROF,
+            CCSIZSET,
             LATITUDE,
             LONGITUDE
         FROM
@@ -177,4 +201,4 @@ WHERE
     YEAR IN (2007,
              2009,
              2011)
-AND md_earn_wne_p10 IS NOT NULL
+AND md_earn_wne_p10 IS NOT NULL;
