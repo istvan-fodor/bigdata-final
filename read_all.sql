@@ -9,27 +9,32 @@ SELECT
     CONTROL     AS "control",
     SUBSTR(region,1,
     CASE
-        WHEN INSTR('(', region) > 0
-        THEN INSTR('(', region)-2
+        WHEN INSTR(region, '(') > 0
+        THEN INSTR(region, '(')-2
         ELSE LENGTH(region)
-    END)      AS "region",
-    R.CCBASIC AS "carnegie_basic",
+    END) AS "region",
+    SUBSTR( R.CCBASIC,1,
+    CASE
+        WHEN INSTR( R.CCBASIC, '(') > 0
+        THEN INSTR( R.CCBASIC, '(')-2
+        ELSE LENGTH( R.CCBASIC)
+    END) AS "carnegie_basic",
     SUBSTR(R.CCUGPROF,1,
     CASE
-        WHEN instr('(', R.CCUGPROF) > 0
-        THEN INSTR('(', R.CCUGPROF)-2
+        WHEN INSTR(R.CCUGPROF, '(') > 0
+        THEN INSTR(R.CCUGPROF, '(')-2
         ELSE LENGTH(R.CCUGPROF)
     END) AS "carnegie_undergrad",
     SUBSTR(R.CCSIZSET,1,
     CASE
-        WHEN INSTR('(', R.CCSIZSET) > 0
-        THEN INSTR('(', R.CCSIZSET)-2
+        WHEN INSTR(R.CCSIZSET, '(') > 0
+        THEN INSTR(R.CCSIZSET, '(')-2
         ELSE LENGTH(R.CCSIZSET)
     END) AS "carnegie_size_setting",
     SUBSTR(R.locale,1,
     CASE
-        WHEN INSTR('(', R.locale) > 0
-        THEN INSTR('(', R.locale)-2
+        WHEN INSTR(R.locale, '(') > 0
+        THEN INSTR(R.locale, '(')-2
         ELSE LENGTH(R.locale)
     END)                      AS "locale",
     IFNULL(R.RELAFFIL,'None') AS "religious_affil",
