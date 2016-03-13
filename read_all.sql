@@ -1,3 +1,4 @@
+select count(*) from (
 SELECT
     INSTNM          AS "name",
     LATITUDE        AS "latitude",
@@ -8,17 +9,17 @@ SELECT
     YEAR            AS "year",
     CONTROL         AS "control",
     region          AS "region",
-    locale          AS "locale",
-    RELAFFIL        AS "religious_affil",
-    HBCU            AS "historically_black",
-    PBI             AS "predominantly_black",
-    ANNHI           AS "alaskan_hawaian",
-    TRIBAL          AS "tribal",
-    AANAPII         AS "asian_am_native_am_pacific",
-    HSI             AS "hispanic",
-    NANTI           AS "native_american_non_tribal",
-    MENONLY         AS "men_only",
-    WOMENONLY       AS "women_only",
+    R.locale        AS "locale",
+    R.RELAFFIL      AS "religious_affil",
+    R.HBCU          AS "historically_black",
+    R.PBI           AS "predominantly_black",
+    R.ANNHI         AS "alaskan_hawaian",
+    R.TRIBAL        AS "tribal",
+    R.AANAPII       AS "asian_am_native_am_pacific",
+    R.HSI           AS "hispanic",
+    R.NANTI         AS "native_american_non_tribal",
+    R.MENONLY       AS "men_only",
+    R.WOMENONLY     AS "women_only",
     ADM_RATE        AS "admission_rate",
     ADM_RATE_ALL    AS "admission_rate_all",
     PREDDEG         AS "predominant_degree",
@@ -104,9 +105,32 @@ SELECT
     PFTFAC          AS "ft_faculty_rate",
     COSTT4_A        AS "cost_attendance_academic_year",
     COSTT4_P        AS "cost_attendance_program_year"
-    --gt_25k_p6       AS "six_yrs_after_entry_percent_greater_than_25000"
 FROM
     scorecard
+LEFT OUTER JOIN
+    (
+        SELECT
+            unitid,
+            opeid ,
+            locale ,
+            RELAFFIL ,
+            HBCU ,
+            PBI ,
+            ANNHI ,
+            TRIBAL ,
+            AANAPII ,
+            HSI ,
+            NANTI ,
+            MENONLY ,
+            WOMENONLY
+        FROM
+            scorecard
+        WHERE
+            YEAR = 2013) R
+ON
+    scorecard.opeid = r.opeid and scorecard.unitid = r.opeid
 WHERE
-    YEAR IN (2009, 2011)
-AND md_earn_wne_p10 IS NOT NULL
+    YEAR IN (2007,
+             2009,
+             2011)
+AND md_earn_wne_p10 IS NOT NULL)

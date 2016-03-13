@@ -57,7 +57,9 @@ pred <- as.matrix(predict(fit, newdata = cost_x[which(is.na(college$cost)),]))
 pred_check <- predict(fit, newdata = cost_x[which(!is.na(cost_y)),])
 pred_check <- as.matrix(cbind(cost_y[which(!is.na(cost_y))], pred_check))
 ###########
-college[which(is.na(college$cost)),]$cost = pred
+college$is_predicted_cost <- rep(0, nrow(college))
+college$is_predicted_cost[which(is.na(college$cost))]=1
+college$cost[which(is.na(college$cost))] = pred
 which(is.na(college$cost))
 
 college <- subset(college, select = c(-tuition_in_state,-tuition_out_of_state,-tuition_program_year,-tuition_revenue_per_fte,-cost_attendance_academic_year,-cost_attendance_program_year))
@@ -74,6 +76,10 @@ nam <- subset(nam,select = c(-ten_yrs_after_entry_median))
 nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
 
+length(which(is.na(college$ten_yrs_after_entry_median)))
+
+
+
 for(col in 1:ncol(college)) {
   coldata <- college[,col]
   ##print(class(coldata))
@@ -84,3 +90,4 @@ for(col in 1:ncol(college)) {
     college[,col] <- coldata
   }
 }
+
