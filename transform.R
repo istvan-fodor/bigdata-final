@@ -13,6 +13,7 @@ college <- college[,-(1:6)]
 college$region <- factor(college$region)
 college$control <- as.factor(college$control)
 college$locale <- as.factor(college$locale)
+college$carnegie <- as.factor(college$carnegie)
 college$religious_affil <- as.factor(college$religious_affil)
 college$religious_affil <- relevel(college$religious_affil, ref = "None")
 college$predominant_degree <- as.factor(college$predominant_degree)
@@ -23,7 +24,7 @@ college$control <- factor(college$control, levels = c(NA, levels(college$control
 college$locale <- factor(college$locale, levels = c(NA, levels(college$locale)), exclude = NULL)
 college$predominant_degree <- factor(college$predominant_degree, levels = c(NA, levels(college$predominant_degree)), exclude = NULL)
 college$highest_degree <- factor(college$highest_degree, levels = c(NA, levels(college$highest_degree)), exclude = NULL)
-
+college$carnegie <- factor(college$carnegie,levels=c(NA,levels(college$carnegie)),exclude = NULL)
 
 college$logsize <- log(1+college$size)
 
