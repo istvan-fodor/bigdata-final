@@ -32,7 +32,12 @@ college$carnegie_basic <- factor(college$carnegie_basic,levels=c(NA,levels(colle
 college$carnegie_undergrad <- factor(college$carnegie_undergrad,levels=c(NA,levels(college$carnegie_undergrad)),exclude = NULL)
 college$carnegie_size_setting <- factor(college$carnegie_size_setting,levels=c(NA,levels(college$carnegie_size_setting)),exclude = NULL)
 
-college$logsize <- log(1+college$size)
+college$log_size <- log(1+college$size)
+college$log_instructional_expenditure_per_fte <- log(1+college$instructional_expenditure_per_fte)
+college$log_faculty_salary <- log(1+college$faculty_salary)
+college$log_median_debt_suppressed_completers_overall <- log(1+college$median_debt_suppressed_completers_overall)
+
+college <- subset(college, select = c(-size, -instructional_expenditure_per_fte, -faculty_salary, -median_debt_suppressed_completers_overall))
 
 for (i in 1:ncol(college)) {
   if (class(college[,i]) == "integer") {
@@ -82,6 +87,8 @@ nasmm <- nasmm[,-97]
 
 length(which(is.na(college$ten_yrs_after_entry_median)))
 
+college_explore <- college
+
 for(col in 1:ncol(college)) {
   coldata <- college[,col]
   ##print(class(coldata))
@@ -92,3 +99,4 @@ for(col in 1:ncol(college)) {
     college[,col] <- coldata
   }
 }
+
