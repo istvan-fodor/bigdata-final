@@ -18,15 +18,17 @@ xpca <- predict(pca)
 loadings[order(abs(loadings[,1]),decreasing=TRUE)[1:50],1]
 loadings[order(abs(loadings[,2]),decreasing=TRUE)[1:50],2]
 loadings[order(abs(loadings[,3]),decreasing=TRUE)[1:50],3]
+loadings[order(abs(loadings[,5]),decreasing=TRUE)[1:50],5]
 
 ## Top 50 Universities Associated with PCA #1, #2 & #3
 college_metadata[order(pca$x[,1],decreasing=TRUE)[1:50],1]
 college_metadata[order(pca$x[,2],decreasing=TRUE)[1:50],1]
 college_metadata[order(pca$x[,3],decreasing=TRUE)[1:50],1]
+college_metadata[order(pca$x[,5],decreasing=TRUE)[1:50],1]
 
 ## Lasso and CV Lasso Regression
-cv.reg <- cv.gamlr(cBind(xsmm,nasmm),y,lmr=1e-4)
-reg <- gamlr(cBind(xsmm,nasmm),y,lmr=1e-4)
+cv.reg <- cv.gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4)
+reg <- gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4)
 
 ## Plot Lasso and view Coefficients
 plot(reg)
