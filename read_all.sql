@@ -84,7 +84,6 @@ SELECT
         ELSE 0
     END                         AS "women_only",
     ADM_RATE                    AS "admission_rate",
-    ADM_RATE_ALL                AS "admission_rate_all",
     PREDDEG                     AS "predominant_degree",
     HIGHDEG                     AS "highest_degree",
     SATVR25                     AS "satvr25",
