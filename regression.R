@@ -31,5 +31,5 @@ cv.reg <- cv.gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4)
 reg <- gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4)
 
 ## Plot Lasso and view Coefficients
-plot(reg)
-coef(reg)
+plot(cv.reg)
+coef(cv.reg)
