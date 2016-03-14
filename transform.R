@@ -65,14 +65,23 @@ plot(fit)
 
 college$logcost <- ifelse(is.na(college$cost_attendance_academic_year), log(1+college$cost_attendance_program_year), log(1+college$cost_attendance_academic_year))
 pred <- as.matrix(predict(fit, newdata = cost_x[which(is.na(college$logcost)),], select="1se"))
-###########
+######  Check for outliers ##########
 pred_check <- predict(fit, newdata = cost_x[which(!is.na(cost_y)),])
 pred_check <- as.matrix(cbind(cost_y[which(!is.na(cost_y))], pred_check))
+bad_records <- rownames(pred_check[(which(abs(pred_check[,1] - pred_check[,2]) > 5)),])
+print(paste("Number of colleges with residuals greater than 5: ",length(bad_records)))
+print(college[bad_records,c("tuition_in_state", "tuition_out_of_state", "tuition_program_year", "tuition_revenue_per_fte", "cost_attendance_academic_year", "cost_attendance_program_year")])
+print(college[rownames(pred_check[(which(abs(pred_check[,1] - pred_check[,2]) > 5)),]),c("tuition_in_state", "tuition_out_of_state", "tuition_program_year", "tuition_revenue_per_fte", "cost_attendance_academic_year", "cost_attendance_program_year")])
+#Tuition is 10k+ but cost is 0, this is probably bad data, so we remove from our display
+plot(pred_check[!rownames(pred_check) %in% bad_records,1], pred_check[!rownames(pred_check) %in% bad_records,2],
+     xlab = "In-sample Cost", ylab = "Cost Prediction", main = "Predicting Cost")
+print(college_metadata[bad_records,])
 ###########
 college$is_predicted_cost <- rep(0, nrow(college))
 college$is_predicted_cost[which(is.na(college$logcost))]=1
 college$logcost[which(is.na(college$logcost))] = pred
 which(is.na(college$logcost))
+
 
 college <- subset(college, select = c(-tuition_in_state,-tuition_out_of_state,-tuition_program_year,-tuition_revenue_per_fte,-cost_attendance_academic_year,-cost_attendance_program_year))
 
@@ -83,7 +92,7 @@ nam <- subset(nam,select = c(-ten_yrs_after_entry_median))
 nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
 nasmm[,"logcostTRUE"] <- college$is_predicted_cost
-nasmm <- nasmm[,-97]
+nasmm <- subset(x = nasmm, select = c(-is_predicted_cost))
 
 length(which(is.na(college$ten_yrs_after_entry_median)))
 
