@@ -108,7 +108,6 @@ SELECT
     ACTMTMID                    AS "actmtmid",
     ACTWRMID                    AS "actwrmid",
     SAT_AVG                     AS "sat_avg",
-    SAT_AVG_ALL                 AS "sat_avg_all",
     PCIP01                      AS "percent_agriculture",
     PCIP03                      AS "percent_resources",
     PCIP04                      AS "percent_architecture",
