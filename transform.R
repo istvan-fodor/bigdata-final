@@ -46,29 +46,43 @@ for (i in 1:ncol(college)) {
 }
 
 cost_x <- college[,c("tuition_in_state", "tuition_out_of_state", "tuition_program_year", "tuition_revenue_per_fte")]
+cost_x <- data.frame(sapply(cost_x, function (x) log(1+x)))
 has_tuition_a_bool <- !(is.na(college$tuition_in_state) & is.na(college$tuition_out_of_state))
 has_tuition_b_bool <- !is.na(college$tuition_program_year)
-has_tuition_a <- ifelse(has_tuition_a_bool,1,0)
-has_tuition_b <- ifelse(has_tuition_b_bool,1,0)
-cost_x <- cbind(cost_x,has_tuition_a)
-cost_x <- cbind(cost_x,has_tuition_b)
+is_academic_year_institution <- ifelse(has_tuition_a_bool,1,0)
+is_program_year_institution <- ifelse(has_tuition_b_bool,1,0)
+cost_x <- cbind(cost_x,is_academic_year_institution, is_program_year_institution)
 cost_x <- cbind(cost_x, paste(college_metadata$city, college_metadata$stabbr,sep = ","))
+#cost_x <- cbind(cost_x, college$locale, college$year, college$region)
 colnames(cost_x)[ncol(cost_x)] <- "location"
 cost_x[is.na(cost_x)] <- 0 
-cost_x <- sparse.model.matrix(~ has_tuition_a * (log(1+tuition_in_state) + log(1+tuition_out_of_state)) * location + has_tuition_b * log(1+tuition_program_year) * location + log(1+tuition_revenue_per_fte) * location + ., data = cost_x)
+cost_x <- sparse.model.matrix(~ is_academic_year_institution * (tuition_in_state + tuition_out_of_state) * location + is_program_year_institution * tuition_program_year * location + tuition_revenue_per_fte * location + ., data = cost_x)
 cost_y <- college[,c("cost_attendance_academic_year", "cost_attendance_program_year")]
 cost_y <- ifelse(is.na(cost_y$cost_attendance_academic_year), log(1+cost_y$cost_attendance_program_year), log(1+cost_y$cost_attendance_academic_year))
+#Model size
+ncol(cost_x)
+# 29184
+nrow(cost_x[which(!is.na(cost_y)),])
+# 11716
+colnames(cost_x)[5000]
+names(fit$gamlr$beta[,fit$seg.1se])
 
-
-fit <- cv.gamlr(cost_x[which(!is.na(cost_y)),], cost_y[which(!is.na(cost_y))], lambda.min.ratio=1e-4)
+fit <- cv.gamlr(cost_x[which(!is.na(cost_y)),], cost_y[which(!is.na(cost_y))], lambda.min.ratio=1e-4, nfold = 10, verb = TRUE)
 1-fit$gamlr$deviance[fit$seg.1se]/fit$gamlr$deviance[1]
-#0.6391429
+#seg45
+#0.6975331
+1-fit$gamlr$deviance[fit$seg.min]/fit$gamlr$deviance[1]
+#seg64 
+#0.84871 
 plot(fit)
-
+length(which(fit$gamlr$beta[,fit$seg.min] > 0))
+#min coefficient count: 2066
+length(which(fit$gamlr$beta[,fit$seg.1se] > 0))
+#1se coefficient count: 377
 college$logcost <- ifelse(is.na(college$cost_attendance_academic_year), log(1+college$cost_attendance_program_year), log(1+college$cost_attendance_academic_year))
 pred <- as.matrix(predict(fit, newdata = cost_x[which(is.na(college$logcost)),], select="1se"))
-######  Check for outliers ##########
-pred_check <- predict(fit, newdata = cost_x[which(!is.na(cost_y)),])
+######  Check in-sample predictions ##########
+pred_check <- predict(fit, newdata = cost_x[which(!is.na(cost_y)),], select = "1se")
 pred_check <- as.matrix(cbind(cost_y[which(!is.na(cost_y))], pred_check))
 bad_records <- rownames(pred_check[(which(abs(pred_check[,1] - pred_check[,2]) > 5)),])
 print(paste("Number of colleges with residuals greater than 5: ",length(bad_records)))
@@ -77,8 +91,10 @@ print(college[rownames(pred_check[(which(abs(pred_check[,1] - pred_check[,2]) > 
 #Tuition is 10k+ but cost is 0, this is probably bad data, so we remove from our display
 pred_check <- pred_check[!rownames(pred_check) %in% bad_records,]
 plot(pred_check[,1], pred_check[,2],
-     xlab = "In-sample Log(Cost)", ylab = "Log(Cost) Prediction", main = "Predicting Cost")
+     xlab = "In-sample Log(Cost)", ylab = "Log(Cost) Prediction", main = "Predicting Cost",
+     xlim = c(7.3,12), ylim = c(7.3,12))
 abline(0, 1, col = "red")
+
 #Slight 
 print(college_metadata[bad_records,])
 ###########
