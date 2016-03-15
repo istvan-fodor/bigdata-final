@@ -92,7 +92,8 @@ nam <- subset(nam,select = c(-ten_yrs_after_entry_median))
 nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
 nasmm[,"logcostTRUE"] <- college$is_predicted_cost
-nasmm <- subset(x = nasmm, select = c(-is_predicted_cost))
+college <- subset(x = college, select = c(-is_predicted_cost))
+nasmm <- nasmm[,-ncol(nasmm)]
 
 length(which(is.na(college$ten_yrs_after_entry_median)))
 
@@ -108,4 +109,3 @@ for(col in 1:ncol(college)) {
     college[,col] <- coldata
   }
 }
-
