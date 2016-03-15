@@ -10,7 +10,7 @@ xsmm <- sparse.model.matrix(~.,data=x)[,-1]
 ## Create Principal Components
 xpca <- x[,sapply(x,is.numeric)]
 pca <- prcomp(xpca,scale=TRUE)
-loadings <- pca$rotation[,1:5]
+loadings <- pca$rotation
 xpca <- predict(pca)
 
 ## PCA Analysis
@@ -30,6 +30,7 @@ pca2 <- loadings[order(abs(loadings[,2]),decreasing=TRUE)[1:50],2]
 pca3 <- loadings[order(abs(loadings[,3]),decreasing=TRUE)[1:50],3]
 pca4 <- loadings[order(abs(loadings[,4]),decreasing=TRUE)[1:50],4]
 pca5 <- loadings[order(abs(loadings[,5]),decreasing=TRUE)[1:50],5]
+loadings[order(abs(loadings[,93]),decreasing=TRUE)[1:50],93]
 
 ## Export PCA Loadings
 ## write.table(pca1,"pca1.csv",sep=",")
