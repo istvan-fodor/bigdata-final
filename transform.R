@@ -64,13 +64,12 @@ ncol(cost_x)
 # 29184
 nrow(cost_x[which(!is.na(cost_y)),])
 # 11716
-colnames(cost_x)[5000]
-names(fit$gamlr$beta[,fit$seg.1se])
 
 fit <- cv.gamlr(cost_x[which(!is.na(cost_y)),], cost_y[which(!is.na(cost_y))], lambda.min.ratio=1e-4, nfold = 10, verb = TRUE)
+names(sort(fit$gamlr$beta[,fit$seg.1se], decreasing = TRUE))[1:20]
 1-fit$gamlr$deviance[fit$seg.1se]/fit$gamlr$deviance[1]
-#seg45
-#0.6975331
+#seg44 
+#0.6851853
 1-fit$gamlr$deviance[fit$seg.min]/fit$gamlr$deviance[1]
 #seg64 
 #0.84871 
