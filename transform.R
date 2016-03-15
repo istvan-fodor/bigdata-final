@@ -58,6 +58,8 @@ cost_x[is.na(cost_x)] <- 0
 cost_x <- sparse.model.matrix(~ has_tuition_a * (log(1+tuition_in_state) + log(1+tuition_out_of_state)) * location + has_tuition_b * log(1+tuition_program_year) * location + log(1+tuition_revenue_per_fte) * location + ., data = cost_x)
 cost_y <- college[,c("cost_attendance_academic_year", "cost_attendance_program_year")]
 cost_y <- ifelse(is.na(cost_y$cost_attendance_academic_year), log(1+cost_y$cost_attendance_program_year), log(1+cost_y$cost_attendance_academic_year))
+
+
 fit <- cv.gamlr(cost_x[which(!is.na(cost_y)),], cost_y[which(!is.na(cost_y))], lambda.min.ratio=1e-4)
 1-fit$gamlr$deviance[fit$seg.1se]/fit$gamlr$deviance[1]
 #0.6391429
@@ -73,8 +75,11 @@ print(paste("Number of colleges with residuals greater than 5: ",length(bad_reco
 print(college[bad_records,c("tuition_in_state", "tuition_out_of_state", "tuition_program_year", "tuition_revenue_per_fte", "cost_attendance_academic_year", "cost_attendance_program_year")])
 print(college[rownames(pred_check[(which(abs(pred_check[,1] - pred_check[,2]) > 5)),]),c("tuition_in_state", "tuition_out_of_state", "tuition_program_year", "tuition_revenue_per_fte", "cost_attendance_academic_year", "cost_attendance_program_year")])
 #Tuition is 10k+ but cost is 0, this is probably bad data, so we remove from our display
-plot(pred_check[!rownames(pred_check) %in% bad_records,1], pred_check[!rownames(pred_check) %in% bad_records,2],
-     xlab = "In-sample Cost", ylab = "Cost Prediction", main = "Predicting Cost")
+pred_check <- pred_check[!rownames(pred_check) %in% bad_records,]
+plot(pred_check[,1], pred_check[,2],
+     xlab = "In-sample Log(Cost)", ylab = "Log(Cost) Prediction", main = "Predicting Cost")
+abline(0, 1, col = "red")
+#Slight 
 print(college_metadata[bad_records,])
 ###########
 college$is_predicted_cost <- rep(0, nrow(college))
@@ -92,7 +97,7 @@ nam <- subset(nam,select = c(-ten_yrs_after_entry_median))
 nasmm <- sparse.model.matrix(~.,data=nam)[,-1]
 
 nasmm[,"logcostTRUE"] <- college$is_predicted_cost
-nasmm <- subset(x = nasmm, select = c(-is_predicted_cost))
+college <- subset(x = college, select = c(-is_predicted_cost))
 
 length(which(is.na(college$ten_yrs_after_entry_median)))
 
