@@ -117,7 +117,7 @@ nasmm <- nasmm[,-ncol(nasmm)]
 
 length(which(is.na(college$ten_yrs_after_entry_median)))
 
-college_explore <- college
+college_explore <- cbind(college_metadata, college)
 
 for(col in 1:ncol(college)) {
   coldata <- college[,col]
