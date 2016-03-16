@@ -58,20 +58,21 @@ college_metadata[order(pca$x[,93],decreasing=TRUE)[1:50],1]
 ## Lasso and CV Lasso Regression
 set.seed(41201)
 cv.reg <- cv.gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4, nfold = 50)
-length(which(cv.reg$gamlr$beta[,cv.reg$seg.1se] > 0))
-length(which(as.matrix(coef(cv.reg)) > 0))
-length(round(cv.reg$gamlr$beta[cv.reg$gamlr$beta[,cv.reg$seg.1se] > 0,cv.reg$seg.1se], digits = 4))
-## Plot Lasso and view Coefficients
+length(which(cv.reg$gamlr$beta[,cv.reg$seg.1se] != 0))
+coeffs <- coef(cv.reg)[which(coef(cv.reg) != 0),]
+for (i in 1:length(which(as.matrix(coef(cv.reg)) != 0))) {
+  print(paste(names(coeffs)[i],"=", round(coeffs[i], digits = 4)))    
+}
+## Plot Lasso and write coefficients to file
 plot(cv.reg)
 sink(file = "CV.gamlr.coeffs.txt")
 print(round(coef(cv.reg), digits = 4))
 sink()
-print(round(coef(cv.reg), digits = 4))
 #Lambda
 cv.reg$lambda.1se
-#0.01942915
+#0.02818837
 cv.reg$lambda.min
-#0.001729612
+#0.001192155
 
 cv.reg.pc <- cv.gamlr(cBind(xpca,xsmm,nasmm),y,lmr=1e-4,free=1:ncol(xpca) ,verb = TRUE)
 print(round(coef(cv.reg.pc), digits = 4))

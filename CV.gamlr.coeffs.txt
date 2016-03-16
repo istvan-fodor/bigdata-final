@@ -1,0 +1,437 @@
+435 x 1 sparse Matrix of class "dgCMatrix"
+                                                                                                                         seg45
+intercept                                                                                                               2.3097
+year                                                                                                                    .     
+controlPrivate for-profit                                                                                               0.3705
+controlPrivate nonprofit                                                                                                .     
+controlPublic                                                                                                           .     
+regionFar West                                                                                                          0.0001
+regionGreat Lakes                                                                                                      -0.0253
+regionMid East                                                                                                          .     
+regionNew England                                                                                                      -0.0257
+regionOutlying Areas                                                                                                    .     
+regionPlains                                                                                                            .     
+regionRocky Mountains                                                                                                  -0.0010
+regionSoutheast                                                                                                         .     
+regionSouthwest                                                                                                         0.2979
+regionU.S. Service Schools                                                                                              .     
+carnegie_basicAssociate's--Private For-profit                                                                           .     
+carnegie_basicAssociate's--Private For-profit 4-year Primarily Associate's                                              .     
+carnegie_basicAssociate's--Private Not-for-profit                                                                       .     
+carnegie_basicAssociate's--Private Not-for-profit 4-year Primarily Associate's                                          .     
+carnegie_basicAssociate's--Public 2-year colleges under 4-year universities                                             .     
+carnegie_basicAssociate's--Public 4-year Primarily Associate's                                                          .     
+carnegie_basicAssociate's--Public Rural-serving Large                                                                   .     
+carnegie_basicAssociate's--Public Rural-serving Medium                                                                  .     
+carnegie_basicAssociate's--Public Rural-serving Small                                                                   0.1362
+carnegie_basicAssociate's--Public Special Use                                                                           0.0798
+carnegie_basicAssociate's--Public Suburban-serving Multicampus                                                          .     
+carnegie_basicAssociate's--Public Suburban-serving Single Campus                                                        .     
+carnegie_basicAssociate's--Public Urban-serving Multicampus                                                             .     
+carnegie_basicAssociate's--Public Urban-serving Single Campus                                                          -0.0020
+carnegie_basicBaccalaureate Colleges--Arts & Sciences                                                                   .     
+carnegie_basicBaccalaureate Colleges--Diverse Fields                                                                    0.0000
+carnegie_basicBaccalaureate/Associate's Colleges                                                                        .     
+carnegie_basicDoctoral/Research Universities                                                                           -0.2390
+carnegie_basicMaster's Colleges and Universities                                                                        .     
+carnegie_basicResearch Universities                                                                                    -0.1886
+carnegie_basicSpecial Focus Institutions--Medical schools and medical centers                                           1.4654
+carnegie_basicSpecial Focus Institutions--Other health professions schools                                              .     
+carnegie_basicSpecial Focus Institutions--Other special-focus institutions                                              0.5658
+carnegie_basicSpecial Focus Institutions--Other technology-related schools                                              0.0218
+carnegie_basicSpecial Focus Institutions--Schools of art, music, and design                                            -0.0483
+carnegie_basicSpecial Focus Institutions--Schools of business and management                                            .     
+carnegie_basicSpecial Focus Institutions--Schools of engineering                                                        .     
+carnegie_basicSpecial Focus Institutions--Schools of law                                                                2.5171
+carnegie_basicSpecial Focus Institutions--Theological seminaries, Bible colleges, and other faith-related institutions -1.5097
+carnegie_basicTribal Colleges                                                                                           .     
+carnegie_undergradFull-time four-year, inclusive                                                                        .     
+carnegie_undergradFull-time four-year, more selective, higher transfer-in                                               .     
+carnegie_undergradFull-time four-year, more selective, lower transfer-in                                                .     
+carnegie_undergradFull-time four-year, selective, higher transfer-in                                                    .     
+carnegie_undergradFull-time four-year, selective, lower transfer-in                                                     .     
+carnegie_undergradHigher full-time two-year                                                                             .     
+carnegie_undergradHigher part-time four-year                                                                            .     
+carnegie_undergradHigher part-time two-year                                                                             .     
+carnegie_undergradMedium full-time four-year, inclusive                                                                 .     
+carnegie_undergradMedium full-time four-year, selective, higher transfer-in                                             .     
+carnegie_undergradMedium full-time four-year, selective, lower transfer-in                                              .     
+carnegie_undergradMedium full-time two-year                                                                             .     
+carnegie_undergradMixed part/full-time two-year                                                                         .     
+carnegie_undergradUnknown                                                                                               .     
+carnegie_size_settingLarge 2-year                                                                                      -0.6861
+carnegie_size_settingLarge 4-year, highly residential                                                                  -0.2520
+carnegie_size_settingLarge 4-year, primarily nonresidential                                                            -1.5459
+carnegie_size_settingLarge 4-year, primarily residential                                                               -1.1245
+carnegie_size_settingMedium 2-year                                                                                     -0.0593
+carnegie_size_settingMedium 4-year, highly residential                                                                  .     
+carnegie_size_settingMedium 4-year, primarily nonresidential                                                           -0.7775
+carnegie_size_settingMedium 4-year, primarily residential                                                              -0.3396
+carnegie_size_settingNot applicable, special-focus institution                                                          1.0073
+carnegie_size_settingSmall 2-year                                                                                       0.2718
+carnegie_size_settingSmall 4-year, highly residential                                                                   0.2684
+carnegie_size_settingSmall 4-year, primarily nonresidential                                                             .     
+carnegie_size_settingSmall 4-year, primarily residential                                                                .     
+carnegie_size_settingVery large 2-year                                                                                 -1.3836
+carnegie_size_settingVery small 2-year                                                                                  0.5833
+carnegie_size_settingVery small 4-year, highly residential                                                              0.3984
+carnegie_size_settingVery small 4-year, primarily nonresidential                                                        0.3507
+carnegie_size_settingVery small 4-year, primarily residential                                                           0.3490
+localeCity: Large                                                                                                       .     
+localeCity: Midsize                                                                                                    -0.0778
+localeCity: Small                                                                                                      -0.2628
+localeRural: Distant                                                                                                    .     
+localeRural: Fringe                                                                                                    -0.2566
+localeRural: Remote                                                                                                     0.0947
+localeSuburb: Large                                                                                                     .     
+localeSuburb: Midsize                                                                                                  -0.4586
+localeSuburb: Small                                                                                                    -0.2932
+localeTown: Distant                                                                                                    -0.2730
+localeTown: Fringe                                                                                                     -0.2871
+localeTown: Remote                                                                                                     -0.3787
+religious_affilAfrican Methodist Episcopal                                                                              .     
+religious_affilAfrican Methodist Episcopal Zion Church                                                                  .     
+religious_affilAmerican Baptist                                                                                         0.0999
+religious_affilAmerican Evangelical Lutheran Church                                                                     .     
+religious_affilAssemblies of God Church                                                                                -0.1188
+religious_affilBaptist                                                                                                  .     
+religious_affilBrethren Church                                                                                          0.2912
+religious_affilChrist and Missionary Alliance Church                                                                    .     
+religious_affilChristian Church (Disciples of Christ)                                                                   .     
+religious_affilChristian Churches and Churches of Christ                                                                1.3261
+religious_affilChristian Methodist Episcopal                                                                            .     
+religious_affilChristian Reformed Church                                                                                .     
+religious_affilChurch of Brethren                                                                                       .     
+religious_affilChurch of God                                                                                            .     
+religious_affilChurch of the Nazarene                                                                                   .     
+religious_affilChurches of Christ                                                                                       .     
+religious_affilCumberland Presbyterian                                                                                  .     
+religious_affilEpiscopal Church, Reformed                                                                               .     
+religious_affilEvangelical Christian                                                                                    .     
+religious_affilEvangelical Covenant Church of America                                                                   .     
+religious_affilEvangelical Free Church of America                                                                       .     
+religious_affilEvangelical Lutheran Church                                                                              .     
+religious_affilFree Methodist                                                                                           .     
+religious_affilFree Will Baptist Church                                                                                 2.0249
+religious_affilFriends                                                                                                  .     
+religious_affilGreek Orthodox                                                                                          -0.8059
+religious_affilInterdenominational                                                                                      .     
+religious_affilJewish                                                                                                   .     
+religious_affilLatter Day Saints (Mormon Church)                                                                        .     
+religious_affilLutheran Church - Missouri Synod                                                                         .     
+religious_affilLutheran Church in America                                                                               .     
+religious_affilMennonite Brethren Church                                                                                .     
+religious_affilMennonite Church                                                                                         .     
+religious_affilMissionary Church Inc                                                                                    .     
+religious_affilMoravian Church                                                                                          .     
+religious_affilMultiple Protestant Denomination                                                                         .     
+religious_affilNorth American Baptist                                                                                   .     
+religious_affilOriginal Free Will Baptist                                                                               .     
+religious_affilOther (none of the above)                                                                                .     
+religious_affilOther Protestant                                                                                         0.0485
+religious_affilPentecostal Holiness Church                                                                              .     
+religious_affilPresbyterian                                                                                             .     
+religious_affilPresbyterian Church (USA)                                                                                .     
+religious_affilProtestant Episcopal                                                                                     .     
+religious_affilReformed Church in America                                                                               .     
+religious_affilReformed Presbyterian Church                                                                             .     
+religious_affilRoman Catholic                                                                                           .     
+religious_affilRussian Orthodox                                                                                         .     
+religious_affilSeventh Day Adventists                                                                                   .     
+religious_affilSouthern Baptist                                                                                         .     
+religious_affilThe Presbyterian Church in America                                                                       .     
+religious_affilUndenominational                                                                                         .     
+religious_affilUnitarian Universalist                                                                                   .     
+religious_affilUnited Brethren Church                                                                                   .     
+religious_affilUnited Church of Christ                                                                                  .     
+religious_affilUnited Methodist                                                                                         .     
+religious_affilWesleyan                                                                                                -0.2397
+religious_affilWisconsin Evangelical Lutheran Synod                                                                     .     
+historically_black                                                                                                      .     
+predominantly_black                                                                                                     .     
+alaskan_hawaian                                                                                                        -0.4020
+tribal                                                                                                                  .     
+asian_am_native_am_pacific                                                                                              .     
+hispanic                                                                                                                .     
+native_american_non_tribal                                                                                              .     
+men_only                                                                                                               -0.7497
+women_only                                                                                                              .     
+admission_rate                                                                                                          .     
+predominant_degreeEntirely graduate-degree granting                                                                    -3.5315
+predominant_degreeNot classified                                                                                        .     
+predominant_degreePredominantly associate's-degree granting                                                             .     
+predominant_degreePredominantly bachelor's-degree granting                                                              .     
+predominant_degreePredominantly certificate-degree granting                                                             .     
+highest_degreeAssociate degree                                                                                          0.0746
+highest_degreeBachelor's degree                                                                                         .     
+highest_degreeCertificate degree                                                                                        .     
+highest_degreeGraduate degree                                                                                          -0.1132
+highest_degreeNon-degree-granting                                                                                       .     
+satvr25                                                                                                                 .     
+satvr75                                                                                                                 .     
+satmt25                                                                                                                 .     
+satmt75                                                                                                                 .     
+satwr25                                                                                                                 .     
+satwr75                                                                                                                 .     
+satvrmid                                                                                                                .     
+satmtmid                                                                                                                .     
+satwrmid                                                                                                                .     
+actcm25                                                                                                                 .     
+actcm75                                                                                                                 .     
+acten25                                                                                                                 .     
+acten75                                                                                                                 .     
+actmt25                                                                                                                 .     
+actmt75                                                                                                                 .     
+actwr25                                                                                                                 .     
+actwr75                                                                                                                 .     
+actcmmid                                                                                                                .     
+actenmid                                                                                                               -0.0005
+actmtmid                                                                                                                .     
+actwrmid                                                                                                                .     
+sat_avg                                                                                                                 .     
+percent_agriculture                                                                                                     .     
+percent_resources                                                                                                       0.8128
+percent_architecture                                                                                                    .     
+percent_ethnic_cultural_gender                                                                                          .     
+percent_communication                                                                                                   0.2482
+percent_communications_technology                                                                                       .     
+percent_computer                                                                                                        .     
+percent_personal_culinary                                                                                              -0.8893
+percent_education                                                                                                       .     
+percent_engineering                                                                                                     .     
+percent_engineering_technology                                                                                          0.2736
+percent_language                                                                                                        .     
+percent_family_consumer_science                                                                                         .     
+percent_legal                                                                                                           .     
+percent_english                                                                                                         .     
+percent_humanities                                                                                                      .     
+percent_library                                                                                                         .     
+percent_biological                                                                                                      .     
+percent_mathematics                                                                                                     .     
+percent_military                                                                                                        .     
+percent_multidiscipline                                                                                                 .     
+percent_parks_recreation_fitness                                                                                        .     
+percent_philosophy_religious                                                                                            .     
+percent_theology_religious_vocation                                                                                     .     
+percent_physical_science                                                                                                0.4935
+percent_science_technology                                                                                              .     
+percent_psychology                                                                                                      0.2126
+percent_security_law_enforcement                                                                                        .     
+percent_public_administration_social_service                                                                            .     
+percent_social_science                                                                                                  .     
+percent_construction                                                                                                    0.8176
+percent_mechanic_repair_technology                                                                                      .     
+percent_precision_production                                                                                            0.7445
+percent_transportation                                                                                                  0.4695
+percent_visual_performing                                                                                              -0.3542
+percent_health                                                                                                         -0.2387
+percent_business_marketing                                                                                              0.4348
+percent_history                                                                                                         .     
+race_percent_white                                                                                                     -0.2923
+race_percent_black                                                                                                      .     
+race_percent_hispanic                                                                                                   0.3531
+race_percent_asian                                                                                                      .     
+race_percent_aian                                                                                                       0.5122
+race_percent_nhpi                                                                                                       .     
+race_percent_two_or_more                                                                                                .     
+race_percent_non_resident_alien                                                                                        -0.8392
+race_percent_unknown                                                                                                    .     
+ft_faculty_rate                                                                                                         .     
+pell_grant_rate                                                                                                         0.0351
+share_first_time_full_time                                                                                              .     
+retention_rate_full_time                                                                                               -0.2715
+retention_rate_part_time                                                                                                .     
+federal_loan_rate                                                                                                       .     
+share_25_older                                                                                                         -0.0972
+three_yr_repayment_suppressed_overall                                                                                   1.4075
+log_size                                                                                                                0.8010
+log_instructional_expenditure_per_fte                                                                                   .     
+log_faculty_salary                                                                                                      .     
+log_median_debt_suppressed_completers_overall                                                                           0.1515
+logcost                                                                                                                 .     
+yearTRUE                                                                                                                .     
+historically_blackTRUE                                                                                                  .     
+predominantly_blackTRUE                                                                                                 .     
+alaskan_hawaianTRUE                                                                                                     .     
+tribalTRUE                                                                                                              .     
+asian_am_native_am_pacificTRUE                                                                                          .     
+hispanicTRUE                                                                                                            .     
+native_american_non_tribalTRUE                                                                                          .     
+men_onlyTRUE                                                                                                            .     
+women_onlyTRUE                                                                                                          .     
+admission_rateTRUE                                                                                                      .     
+satvr25TRUE                                                                                                             .     
+satvr75TRUE                                                                                                             .     
+satmt25TRUE                                                                                                             .     
+satmt75TRUE                                                                                                             .     
+satwr25TRUE                                                                                                             .     
+satwr75TRUE                                                                                                             .     
+satvrmidTRUE                                                                                                            .     
+satmtmidTRUE                                                                                                            .     
+satwrmidTRUE                                                                                                            .     
+actcm25TRUE                                                                                                             .     
+actcm75TRUE                                                                                                             .     
+acten25TRUE                                                                                                             .     
+acten75TRUE                                                                                                             .     
+actmt25TRUE                                                                                                             .     
+actmt75TRUE                                                                                                             .     
+actwr25TRUE                                                                                                             0.0111
+actwr75TRUE                                                                                                             .     
+actcmmidTRUE                                                                                                            .     
+actenmidTRUE                                                                                                            .     
+actmtmidTRUE                                                                                                            .     
+actwrmidTRUE                                                                                                            .     
+sat_avgTRUE                                                                                                             .     
+percent_agricultureTRUE                                                                                                 .     
+percent_resourcesTRUE                                                                                                   .     
+percent_architectureTRUE                                                                                                .     
+percent_ethnic_cultural_genderTRUE                                                                                      .     
+percent_communicationTRUE                                                                                               .     
+percent_communications_technologyTRUE                                                                                   .     
+percent_computerTRUE                                                                                                    .     
+percent_personal_culinaryTRUE                                                                                           .     
+percent_educationTRUE                                                                                                   .     
+percent_engineeringTRUE                                                                                                 .     
+percent_engineering_technologyTRUE                                                                                      .     
+percent_languageTRUE                                                                                                    .     
+percent_family_consumer_scienceTRUE                                                                                     .     
+percent_legalTRUE                                                                                                       .     
+percent_englishTRUE                                                                                                     .     
+percent_humanitiesTRUE                                                                                                  .     
+percent_libraryTRUE                                                                                                     .     
+percent_biologicalTRUE                                                                                                  .     
+percent_mathematicsTRUE                                                                                                 .     
+percent_militaryTRUE                                                                                                    .     
+percent_multidisciplineTRUE                                                                                             .     
+percent_parks_recreation_fitnessTRUE                                                                                    .     
+percent_philosophy_religiousTRUE                                                                                        .     
+percent_theology_religious_vocationTRUE                                                                                 .     
+percent_physical_scienceTRUE                                                                                            .     
+percent_science_technologyTRUE                                                                                          .     
+percent_psychologyTRUE                                                                                                  .     
+percent_security_law_enforcementTRUE                                                                                    .     
+percent_public_administration_social_serviceTRUE                                                                        .     
+percent_social_scienceTRUE                                                                                              .     
+percent_constructionTRUE                                                                                                .     
+percent_mechanic_repair_technologyTRUE                                                                                  .     
+percent_precision_productionTRUE                                                                                        .     
+percent_transportationTRUE                                                                                              .     
+percent_visual_performingTRUE                                                                                           .     
+percent_healthTRUE                                                                                                      .     
+percent_business_marketingTRUE                                                                                          .     
+percent_historyTRUE                                                                                                     .     
+race_percent_whiteTRUE                                                                                                  .     
+race_percent_blackTRUE                                                                                                  .     
+race_percent_hispanicTRUE                                                                                               .     
+race_percent_asianTRUE                                                                                                  .     
+race_percent_aianTRUE                                                                                                   .     
+race_percent_nhpiTRUE                                                                                                   .     
+race_percent_two_or_moreTRUE                                                                                            .     
+race_percent_non_resident_alienTRUE                                                                                     .     
+race_percent_unknownTRUE                                                                                                .     
+ft_faculty_rateTRUE                                                                                                    -0.2528
+pell_grant_rateTRUE                                                                                                     .     
+share_first_time_full_timeTRUE                                                                                          .     
+retention_rate_full_timeTRUE                                                                                            .     
+retention_rate_part_timeTRUE                                                                                           -0.1147
+federal_loan_rateTRUE                                                                                                   .     
+share_25_olderTRUE                                                                                                     -0.6183
+three_yr_repayment_suppressed_overallTRUE                                                                               .     
+log_sizeTRUE                                                                                                           -0.1814
+log_instructional_expenditure_per_fteTRUE                                                                               1.3815
+log_faculty_salaryTRUE                                                                                                  .     
+log_median_debt_suppressed_completers_overallTRUE                                                                      -1.4455
+logcostTRUE                                                                                                             .     
+PC1                                                                                                                     .     
+PC2                                                                                                                     0.0058
+PC3                                                                                                                     .     
+PC4                                                                                                                     0.0229
+PC5                                                                                                                     0.1674
+PC6                                                                                                                    -0.0178
+PC7                                                                                                                     .     
+PC8                                                                                                                     0.0745
+PC9                                                                                                                     .     
+PC10                                                                                                                    .     
+PC11                                                                                                                    .     
+PC12                                                                                                                    .     
+PC13                                                                                                                    .     
+PC14                                                                                                                    .     
+PC15                                                                                                                   -0.0589
+PC16                                                                                                                    .     
+PC17                                                                                                                   -0.0825
+PC18                                                                                                                    .     
+PC19                                                                                                                    .     
+PC20                                                                                                                   -0.1083
+PC21                                                                                                                    .     
+PC22                                                                                                                    .     
+PC23                                                                                                                    .     
+PC24                                                                                                                    .     
+PC25                                                                                                                    .     
+PC26                                                                                                                   -0.0089
+PC27                                                                                                                   -0.0225
+PC28                                                                                                                    .     
+PC29                                                                                                                    .     
+PC30                                                                                                                   -0.0326
+PC31                                                                                                                    .     
+PC32                                                                                                                   -0.0105
+PC33                                                                                                                    .     
+PC34                                                                                                                   -0.0815
+PC35                                                                                                                    .     
+PC36                                                                                                                    .     
+PC37                                                                                                                    .     
+PC38                                                                                                                    .     
+PC39                                                                                                                    .     
+PC40                                                                                                                    0.0037
+PC41                                                                                                                    .     
+PC42                                                                                                                    .     
+PC43                                                                                                                    .     
+PC44                                                                                                                    .     
+PC45                                                                                                                    .     
+PC46                                                                                                                    .     
+PC47                                                                                                                   -0.0131
+PC48                                                                                                                    .     
+PC49                                                                                                                    .     
+PC50                                                                                                                    .     
+PC51                                                                                                                   -0.0064
+PC52                                                                                                                    .     
+PC53                                                                                                                   -0.0108
+PC54                                                                                                                    .     
+PC55                                                                                                                    .     
+PC56                                                                                                                    .     
+PC57                                                                                                                    .     
+PC58                                                                                                                    0.0896
+PC59                                                                                                                    .     
+PC60                                                                                                                    .     
+PC61                                                                                                                    .     
+PC62                                                                                                                    .     
+PC63                                                                                                                    .     
+PC64                                                                                                                    .     
+PC65                                                                                                                   -0.0608
+PC66                                                                                                                    .     
+PC67                                                                                                                    .     
+PC68                                                                                                                    .     
+PC69                                                                                                                    .     
+PC70                                                                                                                   -0.0156
+PC71                                                                                                                    0.0083
+PC72                                                                                                                    .     
+PC73                                                                                                                    0.0063
+PC74                                                                                                                   -0.3153
+PC75                                                                                                                    .     
+PC76                                                                                                                    .     
+PC77                                                                                                                    .     
+PC78                                                                                                                    .     
+PC79                                                                                                                    .     
+PC80                                                                                                                    .     
+PC81                                                                                                                    .     
+PC82                                                                                                                    .     
+PC83                                                                                                                    .     
+PC84                                                                                                                   -0.3329
+PC85                                                                                                                    .     
+PC86                                                                                                                    .     
+PC87                                                                                                                    .     
+PC88                                                                                                                    .     
+PC89                                                                                                                    .     
+PC90                                                                                                                    .     
+PC91                                                                                                                    .     
+PC92                                                                                                                    .     
+PC93                                                                                                                    .     
