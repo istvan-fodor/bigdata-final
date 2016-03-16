@@ -1,32 +1,42 @@
 source("transform.R")
-library(Matrix)
-library(corrplot)
 
-corrplot(college_pred)
-college2 <- sparse.model.matrix(~., data = college_pred, na.action='na.omit')
+library(maps)
+library(mapdata)
 
-college_pred2 <- college_pred
-college_pred2 <- subset(college_pred, select = c(-tuition_program_year))
-ncol(college_pred2)
-
-college2 <- college[,5:7]
-summary(college[,5:7])
-x1 <- sparse.model.matrix(  ~ ., data=college_pred[,c(1:86)])
-x2 <- model.matrix(  ~ ., data=college_pred[,83])
-nrow(college_pred2[,1:82])
-nrow(x1)
-ncol(x1)
-x1[,c("sat_avg")]
-
-colnames(x1)
-x <- x1[,200:206]
-
-x1[79,]
-for(i in 1:(ncol(college_pred2)-1)) {
-  print(colnames(college_pred2[,c(i,i+1)]))
-  x <- sparse.model.matrix( ~ ., data=college_pred2[,c(i, i+1)])
-}
+library(grDevices)
+library(plyr)
 
 
+#library(ggplot2)
+#library(ggmap)
 
-summary(college_pred[,"tuition_in_state"])
+numerics <- college[,sapply(college,is.numeric)]
+factors <- college[,!sapply(college,is.numeric)]
+
+
+#Negative reation between SAT and age
+plot(college_explore$actcm75, college_explore$share_25_older, xlab = "ACT 75th percentile",
+     ylab = "Percentage of students 25+", main = "ACT75 - Age")
+actfit <- glm(share_25_older ~ actcm75, data = college_explore)
+summary(actfit)
+actfit.r_squared <- 1 - actfit$deviance/actfit$null.deviance
+actfit.r_squared
+#Where are the high percentage?
+morethan50 <- table(college_explore$carnegie_size_setting[college_explore$share_25_older > 0.50])
+morethan50_dominant <- c("Small 2-year", "Very small 2-year", "Very small 4-year, primarily nonresidential")
+p <- sum(morethan50[morethan50_dominant])
+p <- p / sum(morethan50[2:length(morethan50)])
+p
+
+table(college_explore$carnegie_size_setting[college_explore$share_25_older < 0.50])
+
+# per_state <- ddply(college_explore,~stabbr, summarise, mean=mean(ten_yrs_after_entry_median), sd=sd(ten_yrs_after_entry_median))
+# per_state <- per_state[per_state$stabbr %in% state.abb,]
+# rownames(per_state) <- per_state$stabbr
+# per_state
+# nrow(per_state)
+# breaks <- hist(per_state[,2], plot = FALSE, breaks = 5)$breaks
+# palette <- colorRampPalette(c("white", "black"))(length(breaks))
+# palette <- rainbow(length(breaks))
+# color <- sapply(per_state$mean, function(m) palette[max(which(m > breaks))])
+# names(color) <- rownames(per_state)
