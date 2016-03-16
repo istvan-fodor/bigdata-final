@@ -56,10 +56,11 @@ college_metadata[order(pca$x[,5],decreasing=TRUE)[1:50],1]
 college_metadata[order(pca$x[,93],decreasing=TRUE)[1:50],1]
 
 ## Lasso and CV Lasso Regression
-cv.reg <- cv.gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4)
+set.seed(41201)
+cv.reg <- cv.gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4, nfold = 50)
 length(which(cv.reg$gamlr$beta[,cv.reg$seg.1se] > 0))
 length(which(as.matrix(coef(cv.reg)) > 0))
-round(cv.reg$gamlr$beta[cv.reg$gamlr$beta[,cv.reg$seg.1se] > 0,cv.reg$seg.1se], digits = 4)
+length(round(cv.reg$gamlr$beta[cv.reg$gamlr$beta[,cv.reg$seg.1se] > 0,cv.reg$seg.1se], digits = 4))
 ## Plot Lasso and view Coefficients
 plot(cv.reg)
 sink(file = "CV.gamlr.coeffs.txt")
