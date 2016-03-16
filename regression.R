@@ -1,7 +1,7 @@
 source("transform.R")
 
 ## Create Y-variable
-y <- college[,"ten_yrs_after_entry_median"]
+y <- log(1+college[,"ten_yrs_after_entry_median"])
 
 ## Create X-variable and X-variable SMM
 x <- subset(college,select=c(-ten_yrs_after_entry_median))
