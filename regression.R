@@ -17,6 +17,17 @@ xpca <- predict(pca)
 
 ## Plot
 plot(xpca[,1:2],pch=21,bg=c(1,3,4,5,1,1,1,1,1,6,1,1,1,1,1)[college$carnegie_undergrad],main="")
+# legend("bottomleft",
+#       legend = c("FT,4y,incl", "FT,4y,selective,high trans", 
+#                   "FT,4y,selective,high trans", "MedFT,4y,inclusive"),
+#        fill = c(3, 4, 5, 6),
+#        bty="n")
+plot.new()
+legend("center",
+       legend = c("Full-time four-year, inclusive", "Full-time four-year, more selective, higher transfer-in", 
+                  "Full-time four-year, more selective, lower transfer-in", "Medium full-time four-year, inclusive"),
+       fill = c(3, 4, 5, 6),
+       bty="n")
 ## 3:green (Full-time four-year, inclusive)
 ## 4:blue (Full-time four-year, more selective, higher transfer-in)
 ## 5:teal (Full-time four-year, more selective, lower transfer-in)
@@ -46,8 +57,23 @@ college_metadata[order(pca$x[,93],decreasing=TRUE)[1:50],1]
 
 ## Lasso and CV Lasso Regression
 cv.reg <- cv.gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4)
-reg <- gamlr(cBind(xsmm,nasmm,xpca),y,lmr=1e-4)
-
+length(which(cv.reg$gamlr$beta[,cv.reg$seg.1se] > 0))
+length(which(as.matrix(coef(cv.reg)) > 0))
+round(cv.reg$gamlr$beta[cv.reg$gamlr$beta[,cv.reg$seg.1se] > 0,cv.reg$seg.1se], digits = 4)
 ## Plot Lasso and view Coefficients
 plot(cv.reg)
-coef(cv.reg)
+sink(file = "CV.gamlr.coeffs.txt")
+print(round(coef(cv.reg), digits = 4))
+sink()
+print(round(coef(cv.reg), digits = 4))
+#Lambda
+cv.reg$lambda.1se
+#0.01942915
+cv.reg$lambda.min
+#0.001729612
+
+cv.reg.pc <- cv.gamlr(cBind(xpca,xsmm,nasmm),y,lmr=1e-4,free=1:ncol(xpca) ,verb = TRUE)
+print(round(coef(cv.reg.pc), digits = 4))
+
+
+
